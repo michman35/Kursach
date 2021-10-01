@@ -10,12 +10,12 @@ namespace meneger
 	class Delete
 	{
 		
-		public void deleteFile(string path)
+		public void deleteFile(string path)// Метод описывающий функцию удаления
 		{
 			try
 			{
 				var ext = Path.GetExtension(path);
-				if(!string.IsNullOrWhiteSpace(ext))
+				if(!string.IsNullOrWhiteSpace(ext))//условие проверяющие наличие  файл/папка 
 				{
 					File.Delete(path);
 

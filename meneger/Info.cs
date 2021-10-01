@@ -9,7 +9,7 @@ namespace meneger
 {
 	class Info
 	{
-		public void infoFile(string path)
+		public void infoFile(string path)// Метод описывающий функцию запроса информации
 		{
 			try
 			{
@@ -18,7 +18,7 @@ namespace meneger
 				var time = File.GetCreationTime(path);
 				var dirName = Path.GetDirectoryName(path);
 			 
-				if(!string.IsNullOrWhiteSpace(ext))
+				if(!string.IsNullOrWhiteSpace(ext))//условие проверяющие наличие  файл/папка 
 				{
 					Console.WriteLine("Имя файла: " + fileName );
 					Console.WriteLine("Размер файла: " + new FileInfo(path).Length);

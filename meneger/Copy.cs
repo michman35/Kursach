@@ -9,14 +9,14 @@ namespace meneger
 {
 	class Copy
 	{
-		public void copyFile(string path, string newpath)
+		public void copyFile(string path, string newpath) // Метод описывающий функцию копирования
 		{
 			try
 			{
 				var ext = Path.GetExtension(path);
 				var ext1 = Path.GetExtension(newpath);
 
-				if(!string.IsNullOrWhiteSpace(ext))
+				if(!string.IsNullOrWhiteSpace(ext))//условие проверяющие наличие  файл/папка 
 				{
 					File.Copy(path,newpath);
 				}

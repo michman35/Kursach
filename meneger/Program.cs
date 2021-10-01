@@ -9,7 +9,7 @@ namespace meneger
 	{
 		static void Main(string[] args)
 		{
-			string dirname = "C:\\менеджер";
+			string dirname = "C:\\";
 
 			if(Directory.Exists(dirname))
 			{
@@ -22,7 +22,7 @@ namespace meneger
 					Files = new List<FileData>(),
 				};
 				filesData.Add(root);
-				GetFiletree(dirs, filesData);
+				GetFiletree(dirs, filesData); 
 				GetFiles(dirname, root.Files);
 				foreach(var file in filesData)
 				{
@@ -32,12 +32,14 @@ namespace meneger
 						Console.WriteLine(item.Path);
 					}
 				}
-				while(true)
+				while(true) // цикл позволяющий приложению не закрываться после выполнение оперций 
 				{
 					Console.WriteLine("==================================================================");
 					Console.WriteLine("1.Delete");
 					Console.WriteLine("2.Copy");
 					Console.WriteLine("3.Info size ");
+					Console.WriteLine("4.Exit ");
+
 					Console.WriteLine("==================================================================");
 					string comment = Console.ReadLine();
 
@@ -45,8 +47,8 @@ namespace meneger
 					{
 						Console.WriteLine("введите путь до файла/папки котрый хотите удалить");
 						string path = Console.ReadLine();
-						Delete delete = new Delete();
-						delete.deleteFile(path);
+						Delete delete = new Delete();//создание обьекта 
+						delete.deleteFile(path);//вывоз метода удаления по указоному пути
 					}
 					if(comment == "2")
 					{
@@ -54,20 +56,25 @@ namespace meneger
 						string path = Console.ReadLine();
 						Console.WriteLine("введите путь куда копировать ");
 						string newpath = Console.ReadLine();
-						Copy copy = new Copy();
-						copy.copyFile(path, newpath);
+						Copy copy = new Copy();//создание обьекта 
+						copy.copyFile(path, newpath);//вывоз метода копирования по указоному пути
 					}
 					if(comment == "3")
 					{
 						Console.WriteLine("введите путь до файла/папки о котором хотите узнать информацию ");
 						string path = Console.ReadLine();
-						Info info = new Info();
-						info.infoFile(path);
+						Info info = new Info();//создание обьекта 
+						info.infoFile(path);//вывоз метода запроса информации по указоному пути
+					}
+					if (comment=="4")
+					{
+						Environment.Exit(0);
+						
 					}
 				}
 			}
 		}
-		static void GetFiletree(string[] dirs, List<DirictoryData> folders)
+		static void GetFiletree(string[] dirs, List<DirictoryData> folders)//метод определяющий каталоги 
 		{
 			foreach(string dir in dirs)
 			{
@@ -89,7 +96,7 @@ namespace meneger
 			
 		}
 
-		static void GetFiles(string dir, List<FileData> filesData)
+		static void GetFiles(string dir, List<FileData> filesData)// метод определяющий файлы 
 		{
 
 			string[] files = Directory.GetFiles(dir);
